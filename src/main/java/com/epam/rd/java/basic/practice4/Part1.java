@@ -15,6 +15,9 @@ public class Part1 {
     }
 
     public  static String dellTwoChars(String input){
+        if(input == null){
+            return "";
+        }
         StringBuilder sb = new StringBuilder();
         Pattern p = Pattern.compile("(?m)[A-zА-я]{2}([A-zА-я]{2,})|[A-zА-я]{1,3}|[ '?.,]+");
         Matcher m = p.matcher(input);
