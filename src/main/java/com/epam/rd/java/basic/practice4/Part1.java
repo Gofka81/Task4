@@ -1,15 +1,17 @@
 package com.epam.rd.java.basic.practice4;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Part1 {
 
     public static void main(String[] args) {
-        System.out.println(getInput(System.getProperty("user.dir")));
+        System.out.println(dellTwoChars(getInput("part1.txt")));
     }
 
     public  static String dellTwoChars(String input){
@@ -25,15 +27,19 @@ public class Part1 {
         }
         return sb.toString();
     }
-    public static String getInput(String path) {
-        final String ENCODING = "Cp1251";
-        String res = null;
+    public static String getInput(String fileName) {
+        Logger logger = Logger.getAnonymousLogger();
+        StringBuilder sb = new StringBuilder();
         try {
-            byte[] bytes = Files.readAllBytes(Paths.get(path));
-               res = new String(bytes, ENCODING);
+            Scanner scanner = new Scanner(new File(fileName), "Cp1251");
+            while (scanner.hasNextLine()) {
+                sb.append(scanner.nextLine()).append(System.lineSeparator());
+            }
+            scanner.close();
+            return sb.toString().trim();
         } catch (IOException ex) {
-            ex.printStackTrace();
+            logger.log(Level.SEVERE, "IOException");
         }
-        return dellTwoChars(res);
+        return sb.toString();
     }
-    }
+}
