@@ -16,7 +16,7 @@ public class Part1 {
 
     public  static String dellTwoChars(String input){
         StringBuilder sb = new StringBuilder();
-        Pattern p = Pattern.compile("(?m)\\b[A-zА-я]{2}([A-zА-я]{2,})|[A-zА-я]{1,3}|[ '?.,]+");
+        Pattern p = Pattern.compile("(?m)[A-zА-я]{2}([A-zА-я]{2,})|[A-zА-я]{1,3}|[ '?.,]+");
         Matcher m = p.matcher(input);
         while(m.find()){
             if(m.group(1).equals(""))
@@ -40,6 +40,6 @@ public class Part1 {
         } catch (IOException ex) {
             logger.log(Level.SEVERE, "IOException");
         }
-        return sb.toString();
+        return  dellTwoChars(sb.toString());
     }
 }
