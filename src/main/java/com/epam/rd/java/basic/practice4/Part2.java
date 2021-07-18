@@ -32,7 +32,7 @@ public class Part2 {
             sb.append(myRandom.nextInt(51))
             .append(" ");
         }
-        return sb.toString();
+        return sb.toString().trim();
     }
 
     public static String sortArray(String arr){
