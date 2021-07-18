@@ -53,7 +53,7 @@ public class Part2 {
     }
 
     public static String getInput(String fileName) {
-        Logger logger = Logger.getAnonymousLogger();
+        Logger logger2 = Logger.getAnonymousLogger();
         StringBuilder sb = new StringBuilder();
         try {
             Scanner scanner = new Scanner(new File(fileName), "Cp1251");
@@ -63,7 +63,7 @@ public class Part2 {
             scanner.close();
             return sb.toString().trim();
         } catch (IOException ex) {
-            logger.log(Level.SEVERE, "IOException");
+            logger2.log(Level.SEVERE, "IOException");
         }
         return sb.toString();
     }
