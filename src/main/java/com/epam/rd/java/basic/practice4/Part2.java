@@ -9,8 +9,8 @@ import java.util.logging.*;
 public class Part2 {
 
     public static void main(String[] args) {
-       createFile("D:part2.txt",generateNumbersString(),"input ==> ");
-       createFile("D:part2_sorted.txt",sortArray(getInput("part2.txt")),"output ==> ");
+       createFile("part2.txt",generateNumbersString(),"input ==> ");
+       createFile("part2_sorted.txt",sortArray(getInput("part2.txt")),"output ==> ");
     }
 
     public static void createFile(String pathFile,String val,String input){
@@ -36,7 +36,8 @@ public class Part2 {
     }
 
     public static String sortArray(String arr){
-        String[] arrS = arr.split(" ");        int[] arrI = new int[arrS.length];
+        String[] arrS = arr.split(" ");
+        int[] arrI = new int[arrS.length];
         for(int i=0; i< arrS.length; i++){
             arrI[i] =Integer.parseInt(arrS[i]);
         }
