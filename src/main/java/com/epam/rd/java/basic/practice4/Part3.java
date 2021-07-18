@@ -66,6 +66,6 @@ public class Part3 {
             sb.append(m.group())
                     .append(" ");
         }
-        System.out.println(sb.toString().trim());
+        System.out.println(sb.toString());
     }
 }
