@@ -13,19 +13,19 @@ public class Part2 {
        createFile("D:part2_sorted.txt",sortArray(getInput("part2.txt")),"output ==> ");
     }
 
-    public static void createFile(String pathFile,String val,String Input){
+    public static void createFile(String pathFile,String val,String input){
         Path path = Paths.get(pathFile);
         try {
             byte[] bs = val.getBytes();
             Path writtenFilePath = Files.write(path, bs);
-            System.out.print(Input + new String(Files.readAllBytes(writtenFilePath)));
+            System.out.print(input + new String(Files.readAllBytes(writtenFilePath)));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public  static String generateNumbersString(){
-        Random myRandom = new Random();
+        Random myRandom = new Random(); //NOSONAR
         StringBuilder sb = new StringBuilder();
 
         for(int i = 0; i < 10; i++){
