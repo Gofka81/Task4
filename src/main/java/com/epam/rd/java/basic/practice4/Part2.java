@@ -35,8 +35,8 @@ public class Part2 {
         return sb.toString();
     }
 
-    public static String sortArray(String[] arrS){
-        int[] arrI = new int[arrS.length];
+    public static String sortArray(String arr){
+        String[] arrS = arr.split(" ");        int[] arrI = new int[arrS.length];
         for(int i=0; i< arrS.length; i++){
             arrI[i] =Integer.parseInt(arrS[i]);
         }
@@ -51,7 +51,7 @@ public class Part2 {
         return sb.toString();
     }
 
-    public static String[] getInput(String fileName) {
+    public static String getInput(String fileName) {
         Logger logger = Logger.getAnonymousLogger();
         StringBuilder sb = new StringBuilder();
         try {
@@ -60,10 +60,10 @@ public class Part2 {
                 sb.append(scanner.nextLine()).append(System.lineSeparator());
             }
             scanner.close();
-            return sb.toString().trim().split(" ");
+            return sb.toString().trim();
         } catch (IOException ex) {
             logger.log(Level.SEVERE, "IOException");
         }
-        return sb.toString().split(" ");
+        return sb.toString();
     }
 }
