@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
 
 public class Part4 {
 
@@ -41,7 +42,7 @@ class SentenceSeparator implements Iterable<String>{
     }
 
     public String returnString(){
-        return iterator().next().trim();
+        return iterator().next().replaceAll(System.lineSeparator()," ").trim();
     }
 
     public Iterator<String> iterator() {
