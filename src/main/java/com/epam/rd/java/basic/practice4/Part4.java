@@ -38,10 +38,18 @@ class SentenceSeparator implements Iterable<String>{
 
     public SentenceSeparator(String args){
         this.args = args.split("(?m)(?<=\\.)[\\r\\n]+(?=[A-Z])");
+        addSeparator();
+    }
+
+    private void addSeparator(){
+        for(int i =0; i< args.length; i++) {
+            args[i] = args[i].replaceAll(System.lineSeparator()," ");
+            args[i] += System.lineSeparator();
+        }
     }
 
     public String returnString(){
-        return iterator().next().replaceAll(System.lineSeparator()," ")+System.lineSeparator();
+        return iterator().next();
     }
 
     public Iterator<String> iterator() {
@@ -50,10 +58,8 @@ class SentenceSeparator implements Iterable<String>{
 
     private class IteratorSentence implements Iterator<String> {
 
-
         private int indexNext;
         private int lastIndex = -1;  //NOSONAR
-
 
         @Override
         public boolean hasNext() {
