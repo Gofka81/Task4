@@ -41,7 +41,7 @@ class SentenceSeparator implements Iterable<String>{
     }
 
     public String returnString(){
-        return iterator().next();
+        return iterator().next().trim();
     }
 
     public Iterator<String> iterator() {
