@@ -12,7 +12,10 @@ public class Part4 {
 
     public static void main(String[] args) {
         SentenceSeparator sentenceSeparator = new SentenceSeparator(getInput());
-        System.out.println(sentenceSeparator.returnString());
+
+        for (String s : sentenceSeparator) {
+            System.out.print(s);
+        }
     }
 
     public static String getInput() {
@@ -43,7 +46,7 @@ class SentenceSeparator implements Iterable<String>{
 
     private void addSeparator(){
         for(int i =0; i< args.length; i++) {
-            args[i] = args[i].replaceAll(System.lineSeparator()," ");
+            args[i] = args[i].replaceAll(System.lineSeparator()," ").trim();
             args[i] += System.lineSeparator();
         }
     }
@@ -56,7 +59,7 @@ class SentenceSeparator implements Iterable<String>{
         return new IteratorSentence();
     }
 
-    private class IteratorSentence implements Iterator<String> {
+    public class IteratorSentence implements Iterator<String> {
 
         private int indexNext;
         private int lastIndex = -1;  //NOSONAR
