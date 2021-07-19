@@ -37,7 +37,7 @@ public class Part3 {
                 case ("stop"):
                     return;
                 default:
-                    System.out.print("Incorrect input");
+                    System.out.println("Incorrect input");
             }
         }
     }
