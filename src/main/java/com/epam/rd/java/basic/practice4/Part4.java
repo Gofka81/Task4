@@ -42,7 +42,7 @@ class SentenceSeparator implements Iterable<String>{
     }
 
     public String returnString(){
-        return iterator().next().replaceAll(System.lineSeparator()," ").trim();
+        return iterator().next().replaceAll(System.lineSeparator()," ");
     }
 
     public Iterator<String> iterator() {
