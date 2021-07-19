@@ -37,7 +37,7 @@ class SentenceSeparator implements Iterable<String>{
     private String[]  args;
 
     public SentenceSeparator(String args){
-        this.args = args.split("(?m)(?<=\\.)\\R(?=[A-Z])");
+        this.args = args.split("(?m)(?<=\\.)[\\r\\n ]+(?=[A-Z])");
     }
 
     public String returnString(){
