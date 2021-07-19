@@ -16,7 +16,6 @@ public class Part5 {
         ResourceBundle rbEN = ResourceBundle.getBundle("resources", new Locale("en"));
         ResourceBundle rb;
         while (true){
-            System.out.println("[ENTER]");
             String choose = scanner.nextLine();
             String[] args = choose.split(" ");
             if(args[0].equals("stop")){
