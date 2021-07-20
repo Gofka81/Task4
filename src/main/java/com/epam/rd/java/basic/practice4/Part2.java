@@ -15,12 +15,13 @@ public class Part2 {
 
     public static void createFile(String pathFile,String val,String input){
         Path path = Paths.get(pathFile);
+        Logger logger = Logger.getAnonymousLogger();
         try {
             byte[] bs = val.getBytes();
             Path writtenFilePath = Files.write(path, bs);
             System.out.println(input + new String(Files.readAllBytes(writtenFilePath)));
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "IOException");
         }
     }
 
