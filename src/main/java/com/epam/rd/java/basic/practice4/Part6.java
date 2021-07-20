@@ -41,17 +41,22 @@ class Progam6{
         Scanner scanner = new Scanner(System.in);
         while (true){
             String val = scanner.nextLine();
-            sb.append(val)
-                    .append(": ");
+
             if(val.equals("cyrl")){
+                sb.append("Cyrl")
+                        .append(": ");
                 System.out.println(sb.toString() + getThisLanguage("[\\p{IsCyrillic}]+"));
             }else if(val.equals("latn")){
+                sb.append("Latn")
+                        .append(": ");
                 System.out.println(sb.toString() + getThisLanguage("[A-z]+"));
             }else if(val.equals("stop")){
                 return;
             }
             else{
-                sb.append("Incorrect input");
+                sb.append(val)
+                        .append(": ")
+                        .append("Incorrect input");
                 System.out.println(sb.toString());
             }
             sb.setLength(0);
