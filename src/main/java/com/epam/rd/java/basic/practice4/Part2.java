@@ -19,7 +19,7 @@ public class Part2 {
             byte[] bs = val.getBytes();
             Path writtenFilePath = Files.write(path, bs);
             System.out.println(input + new String(Files.readAllBytes(writtenFilePath)));
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
