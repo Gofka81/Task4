@@ -36,20 +36,25 @@ class Progam6{
     }
 
     public static void startProgram(){
+        StringBuilder sb = new StringBuilder();
         input = getInput("part6.txt");
         Scanner scanner = new Scanner(System.in);
         while (true){
             String val = scanner.nextLine();
+            sb.append(val)
+                    .append(": ");
             if(val.equals("cyrl")){
-                System.out.println(getThisLanguage("[\\p{IsCyrillic}]+"));
+                System.out.println(sb.toString() + getThisLanguage("[\\p{IsCyrillic}]+"));
             }else if(val.equals("latn")){
-                System.out.println(getThisLanguage("[A-z]+"));
+                System.out.println(sb.toString() + getThisLanguage("[A-z]+"));
             }else if(val.equals("stop")){
                 return;
             }
             else{
-                System.out.println("Incorrect input");
+                sb.append("Incorrect input");
+                System.out.println(sb.toString());
             }
+            sb.setLength(0);
         }
     }
 
