@@ -17,6 +17,8 @@ public class Part6 {
 }
 
 class Progam6{
+    private  Progam6(){}
+
     private static  String input;
 
     public static String getInput(String fileName) {

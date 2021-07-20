@@ -19,7 +19,7 @@ public class Part2 {
             byte[] bs = val.getBytes();
             Path writtenFilePath = Files.write(path, bs);
             System.out.println(input + new String(Files.readAllBytes(writtenFilePath)));
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -41,7 +41,22 @@ public class Part2 {
         for(int i=0; i< arrS.length; i++){
             arrI[i] =Integer.parseInt(arrS[i]);
         }
-        Arrays.sort(arrI);
+
+        boolean isSorted = false;
+        int buf;
+        while(!isSorted) {
+            isSorted = true;
+            for (int i = 0; i < arrI.length-1; i++) {
+                if(arrI[i] > arrI[i+1]){
+                    isSorted = false;
+
+                    buf = arrI[i];
+                    arrI[i] = arrI[i+1];
+                    arrI[i+1] = buf;
+                }
+            }
+        }
+
         StringBuilder sb = new StringBuilder();
         String space = "";
         for(int s: arrI){
