@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
+
 
 public class Part4 {
 
@@ -15,7 +15,7 @@ public class Part4 {
         SentenceSeparator sentenceSeparator = new SentenceSeparator(getInput());
 
         for (String s : sentenceSeparator) {
-            System.out.println(s);
+            System.out.print(s);
         }
     }
 
@@ -47,7 +47,7 @@ class SentenceSeparator implements Iterable<String>{
 
         private void addSeparator(){
             for(int i =0; i< args.length; i++) {
-                args[i] = args[i].replaceAll(System.lineSeparator()," ").trim() + System.lineSeparator();
+                args[i] = args[i].replaceAll(System.lineSeparator()," ").trim();
             }
         }
 
