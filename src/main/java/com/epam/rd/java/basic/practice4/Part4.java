@@ -46,14 +46,10 @@ class SentenceSeparator implements Iterable<String>{
 
     private void addSeparator(){
         for(int i =0; i< args.length; i++) {
-            args[i] = args[i].replaceAll(System.lineSeparator()," ").trim();
-            args[i] += "\n";
+            args[i] = args[i].replaceAll(System.lineSeparator()," ").trim() + "\n";
         }
     }
 
-    public String returnString(){
-        return iterator().next();
-    }
 
     public Iterator<String> iterator() {
         return new IteratorSentence();
