@@ -2,15 +2,11 @@ package com.epam.rd.java.basic.practice4;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Part4 {
 
@@ -18,7 +14,7 @@ public class Part4 {
         SentenceSeparator sentenceSeparator = new SentenceSeparator(getInput());
 
         for (String s : sentenceSeparator) {
-            System.out.print(s);
+            System.out.println(s);
         }
     }
 
@@ -41,45 +37,44 @@ public class Part4 {
 
 class SentenceSeparator implements Iterable<String>{
 
-    private List<String> args;
+        private String[]  args;
 
-    public SentenceSeparator(String args){
-        this.args = separator(args);
-    }
-
-    private List<String> separator(String args){
-        Pattern p = Pattern.compile("(?m)[A-Z].*[0-9\\r\\n ].*[\\.\\n\\r]{1,3}");
-        Matcher m = p.matcher(args);
-        List<String> arr = new ArrayList<>();
-        while (m.find()){
-            arr.add(m.group());
+        public SentenceSeparator(String args){
+            this.args = args.split("(?m)(?<=\\.)[\\r\\n]+(?=[A-Z])");
+            addSeparator();
         }
-        return  arr;
-    }
+
+        private void addSeparator(){
+            for(int i =0; i< args.length; i++) {
+                args[i] = args[i].replaceAll(System.lineSeparator()," ").trim() + System.lineSeparator();
+            }
+        }
 
 
-    public Iterator<String> iterator() {
-        return new IteratorSentence();
-    }
+        public Iterator<String> iterator() {
+            return new IteratorSentence();
+        }
 
-    public class IteratorSentence implements Iterator<String> {
+        public class IteratorSentence implements Iterator<String> {
 
-        private int indexNext;
+            private int indexNext;
+            private int lastIndex = -1;  //NOSONAR
+
 
         @Override
         public boolean hasNext() {
-            return indexNext != args.size();
+            return indexNext != args.length;
         }
 
         @Override
         public String next() {
 
-            if(indexNext>= args.size()){
+            if(indexNext>= args.length){
                 throw new NoSuchElementException();
             }
-            int lastIndex = indexNext;
+            lastIndex = indexNext;
             indexNext++;
-            return args.get(lastIndex);
+            return args[lastIndex];
         }
 
         @Override
