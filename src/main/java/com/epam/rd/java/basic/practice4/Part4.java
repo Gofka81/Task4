@@ -2,7 +2,11 @@ package com.epam.rd.java.basic.practice4;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;             //NOSONAR
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Iterator;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
