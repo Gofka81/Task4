@@ -2,7 +2,7 @@ package com.epam.rd.java.basic.practice4;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.*;             //NOSONAR
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -37,7 +37,7 @@ public class Part4 {
 
 class SentenceSeparator implements Iterable<String>{
 
-    private List<String>  args;
+    private List<String> args;
 
     public SentenceSeparator(String args){
         this.args = separator(args);
@@ -61,7 +61,6 @@ class SentenceSeparator implements Iterable<String>{
     public class IteratorSentence implements Iterator<String> {
 
         private int indexNext;
-        private int lastIndex = -1;  //NOSONAR
 
         @Override
         public boolean hasNext() {
@@ -74,7 +73,7 @@ class SentenceSeparator implements Iterable<String>{
             if(indexNext>= args.size()){
                 throw new NoSuchElementException();
             }
-            lastIndex = indexNext;
+            int lastIndex = indexNext;
             indexNext++;
             return args.get(lastIndex);
         }
