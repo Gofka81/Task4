@@ -42,11 +42,11 @@ class Progam6{
         while (true){
             String val = scanner.nextLine();
 
-            if(val.equals("cyrl")){
+            if(val.equals("Cyrl")){
                 sb.append("Cyrl")
                         .append(": ");
                 System.out.println(sb.toString() + getThisLanguage("[\\p{IsCyrillic}]+"));
-            }else if(val.equals("latn")){
+            }else if(val.equals("Latn")){
                 sb.append("Latn")
                         .append(": ");
                 System.out.println(sb.toString() + getThisLanguage("[A-z]+"));
