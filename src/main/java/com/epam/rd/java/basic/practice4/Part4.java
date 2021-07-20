@@ -2,11 +2,11 @@ package com.epam.rd.java.basic.practice4;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Part4 {
 
@@ -37,17 +37,20 @@ public class Part4 {
 
 class SentenceSeparator implements Iterable<String>{
 
-    private String[]  args;
+    private List<String>  args;
 
     public SentenceSeparator(String args){
-        this.args = args.split("(?m)(?<=\\.)[\\r\\n]+(?=[A-Z])");
-        addSeparator();
+        this.args = separator(args);
     }
 
-    private void addSeparator(){
-        for(int i =0; i< args.length; i++) {
-            args[i] = args[i].replaceAll(System.lineSeparator()," ").trim() + "\n";
+    private List<String> separator(String args){
+        Pattern p = Pattern.compile("(?m)[A-Z].*[0-9\\r\\n ].*[\\.\\n\\r]{1,3}");
+        Matcher m = p.matcher(args);
+        List<String> arr = new ArrayList<>();
+        while (m.find()){
+            arr.add(m.group());
         }
+        return  arr;
     }
 
 
@@ -62,18 +65,18 @@ class SentenceSeparator implements Iterable<String>{
 
         @Override
         public boolean hasNext() {
-            return indexNext != args.length;
+            return indexNext != args.size();
         }
 
         @Override
         public String next() {
 
-            if(indexNext>= args.length){
+            if(indexNext>= args.size()){
                 throw new NoSuchElementException();
             }
             lastIndex = indexNext;
             indexNext++;
-            return args[lastIndex];
+            return args.get(lastIndex);
         }
 
         @Override
